@@ -15,7 +15,7 @@ export class AppComponent {
 
   anno: number = 2018
 
-  listaCursos: {}[] = []
+  listaCursos: any[] = []
 
   ngOnInit() {
     //var self = this
