@@ -1,0 +1,33 @@
+{{fecha}}
+
+<h1>{{curso.toUpperCase()}}</h1>
+
+<p [innerText]="curso"></p>
+<p> {{anno+1}}</p>
+
+<button [disabled]="activo">Agregar</button>
+
+<button (click)="eliminar()">Eliminar</button>
+<hr>
+<!--<input type="text" (input)="ingreso($event)">-->
+<input type="text" [(ngModel)]="curso"><span *ngIf="curso.trim()==''">Campo requerido</span><br>
+<textarea [(ngModel)]="descripcion"></textarea>
+<button (click)="agregar()" [disabled]="curso.trim()==''">Agregar curso</button>
+
+<table>
+  <tr *ngFor="let el of listaCursos; let indice = index">
+    <td>
+      <table *ngIf="el.estado">
+        <tr>
+          <td>{{el.curso}}</td>
+          <td>{{el.descripcion}}</td>
+          <td>{{indice}}</td>
+          <td><button (click)="borrar(indice)">Borrar</button></td>
+        </tr>
+      </table>
+    </td>
+
+  </tr>
+</table>
+
+<button (click)="listarTodo()">Listar</button>
