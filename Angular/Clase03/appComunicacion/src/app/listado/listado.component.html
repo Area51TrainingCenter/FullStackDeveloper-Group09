@@ -1,0 +1,16 @@
+<table class="table table-hover table-striped" *ngIf="items.length">
+	<thead>
+		<tr>
+			<th>Curso</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of items; let indice = index">
+			<td>{{item}}</td>
+			<td>
+				<button class="btn btn-danger" (click)="borrar(indice)">Eliminar</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
