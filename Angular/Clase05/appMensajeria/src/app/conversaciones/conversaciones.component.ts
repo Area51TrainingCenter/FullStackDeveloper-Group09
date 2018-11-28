@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MensajeriaService } from '../mensajeria.service';
+import { Mensaje } from '../modelos/mensaje';
 
 @Component({
 	selector: 'app-conversaciones',
@@ -8,7 +9,7 @@ import { MensajeriaService } from '../mensajeria.service';
 })
 export class ConversacionesComponent implements OnInit {
 
-	mensajes: Array<{ msg: string, persona: string }>
+	mensajes: Array<Mensaje>
 
 	constructor(private mensajeriaService: MensajeriaService) { }
 
@@ -16,7 +17,7 @@ export class ConversacionesComponent implements OnInit {
 		this.mensajes = this.mensajeriaService.listar()
 
 		this.mensajeriaService.onActualizacion.subscribe(
-			(listaMensajes: Array<{ msg: string, persona: string }>) => {
+			(listaMensajes: Array<Mensaje>) => {
 				this.mensajes = listaMensajes
 			}
 		)
