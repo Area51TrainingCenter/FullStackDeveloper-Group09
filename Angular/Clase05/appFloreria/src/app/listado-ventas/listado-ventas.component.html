@@ -1,0 +1,27 @@
+<table class="table table-hover table-striped" *ngIf="ventas.length; else noHayVentas">
+	<thead>
+		<tr>
+			<th>Producto</th>
+			<th>Precio</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--<ng-template [ngIf]="ventas.length">-->
+		<tr *ngFor="let venta of ventas">
+			<td>{{venta.producto}}</td>
+			<td class="text-right">{{venta.precio}}</td>
+		</tr>
+		<!--</ng-template>-->
+	</tbody>
+	<tfoot>
+		<td></td>
+		<td class="text-right">
+			<strong>{{total}}</strong>
+		</td>
+	</tfoot>
+</table>
+<ng-template #noHayVentas>
+	<div style="font-style: italic;font-size:13px">
+		Aun no hay ventas
+	</div>
+</ng-template>

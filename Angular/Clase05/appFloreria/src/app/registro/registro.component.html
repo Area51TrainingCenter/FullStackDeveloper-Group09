@@ -1,0 +1,11 @@
+<form>
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Producto" [(ngModel)]="venta.producto" name="producto">
+	</div>
+	<div class="form-group">
+		<input type="number" class='form-control' placeholder="Precio" [(ngModel)]="venta.precio" name="precio">
+	</div>
+	<div class="form-group">
+		<button class="btn btn-success" (click)="registrarVenta()">Registrar</button>
+	</div>
+</form>
