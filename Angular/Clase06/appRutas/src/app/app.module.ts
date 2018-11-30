@@ -6,11 +6,13 @@ import { RegistroComponent } from './registro/registro.component';
 import { ListadoComponent } from './listado/listado.component';
 import { LoginComponent } from './login/login.component';
 
-import { RouterModule, Route } from '@angular/router'
+import { RouterModule, Route } from '@angular/router';
+import { EdicionComponent } from './edicion/edicion.component'
 
 const rutas: Route[] = [
 	{ path: "", component: LoginComponent },
 	{ path: "registro", component: RegistroComponent },
+	{ path: "edicion/:id", component: EdicionComponent },
 	{ path: "listado", component: ListadoComponent }
 ]
 
@@ -19,7 +21,8 @@ const rutas: Route[] = [
 		AppComponent,
 		RegistroComponent,
 		ListadoComponent,
-		LoginComponent
+		LoginComponent,
+		EdicionComponent
 	],
 	imports: [
 		BrowserModule,
