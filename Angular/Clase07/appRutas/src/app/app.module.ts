@@ -7,6 +7,8 @@ import { ListadoComponent } from './listado/listado.component';
 import { LoginComponent } from './login/login.component';
 import { EdicionComponent } from './edicion/edicion.component'
 import { AppRoutingModule } from './app.routing.module';
+import { AutenticacionGuard } from './guards/autenticacion.guard';
+import { UsuariosResolve } from './guards/usuarios.resolve';
 
 
 @NgModule({
@@ -21,7 +23,7 @@ import { AppRoutingModule } from './app.routing.module';
 		BrowserModule,
 		AppRoutingModule
 	],
-	providers: [],
+	providers: [UsuariosResolve],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

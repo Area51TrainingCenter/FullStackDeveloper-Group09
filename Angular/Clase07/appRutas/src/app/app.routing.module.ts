@@ -4,12 +4,18 @@ import { RegistroComponent } from "./registro/registro.component";
 import { EdicionComponent } from "./edicion/edicion.component";
 import { ListadoComponent } from "./listado/listado.component";
 import { Route, RouterModule } from "@angular/router";
+import { AutenticacionGuard } from "./guards/autenticacion.guard";
+import { UsuariosResolve } from "./guards/usuarios.resolve";
 
 const rutas: Route[] = [
 	{ path: "", component: LoginComponent },
 	{ path: "registro", component: RegistroComponent },
 	{ path: "edicion/:id", component: EdicionComponent },
-	{ path: "listado", component: ListadoComponent }
+	{
+		path: "listado", component: ListadoComponent, canActivate: [AutenticacionGuard], resolve: {
+			nombreUsuario: UsuariosResolve
+		}
+	}
 ]
 
 @NgModule({
