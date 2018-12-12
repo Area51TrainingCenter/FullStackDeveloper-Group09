@@ -51,4 +51,8 @@ export class ReactiveComponent implements OnInit {
 		return { noSonIguales: true }
 	}
 
+	ingresar() {
+		console.log(this.grupo.getRawValue())
+	}
+
 }
