@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="col-6">
+		<form #f="ngForm" (ngSubmit)="ingresar(f)">
+			<div class="form-group">
+				<input type="text" class="form-control" name="correo" ngModel email required #correo="ngModel">
+				<span *ngIf="!correo.valid && correo.touched && correo.errors.email">Formato invalido</span>
+				<span *ngIf="!correo.valid && correo.touched && correo.errors.required">El correo es necesario</span>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" name="contrasena" ngModel required minlength="4" #contrasena="ngModel">
+				<span *ngIf="!contrasena.valid && contrasena.touched && contrasena.errors.required">La contrasena es necesaria</span>
+				<span *ngIf="!contrasena.valid && contrasena.touched && contrasena.errors.minlength">Debe ser de al menos 4 caracteres</span>
+			</div>
+			<div class="form-group">
+				<!--<button type="button" class="btn btn-success" (click)="ingresar(f)" [disabled]="!f.valid">Ingresar</button>-->
+				<button type="submit" class="btn btn-success">Ingresar</button>
+			</div>
+		</form>
+	</div>
+</div>
