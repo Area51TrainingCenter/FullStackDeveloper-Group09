@@ -14,13 +14,14 @@ export class OrdenarPipe implements PipeTransform {
 					return -1
 				}
 			})
+			return nuevoArreglo;
 		} else {
 			return null
 		}
 
 
 
-		return nuevoArreglo;
+
 	}
 
 }
