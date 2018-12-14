@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	fecha: Date = new Date()
 	nombre: string = "FullStack"
+	textoBusqueda: string = ""
+	campoSeleccionado: string = "sinopsis"
 
 	libros = [
 		{ autor: "Mario Vargas Llosa", novela: "La Ciudad y los Perros", anno: 1980, sinopsis: "Novela basada en una historia del colegio militar Leoncio Prado" },
@@ -18,4 +20,8 @@ export class AppComponent {
 		{ autor: "Cesar Vallejo", novela: "Paco Yunque", anno: 1940, sinopsis: "Describe las diferencias sociales y los abusos cometidos por un nino, hijo de un terrateniente, contra un nino pobre cuya mama trabajaba para el terrateniente" },
 		{ autor: "Anonimo", novela: "El Lazarillo de Tormes", anno: 1700, sinopsis: "Narra las peripecias de un nino dado por su mama a un patron para que lo alimente y lo eduque. Finalmente paso por 4 patrones y formo su propia empresa de aguatero" }
 	]
+
+	busqueda(textoBusqueda: string) {
+		this.textoBusqueda = textoBusqueda
+	}
 }
