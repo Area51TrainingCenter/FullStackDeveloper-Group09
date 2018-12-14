@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReducidorPipe } from './reducidor.pipe';
 import { BusquedaPipe } from './busqueda.pipe';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { OrdenarPipe } from './ordenar.pipe'
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		ReducidorPipe,
-		BusquedaPipe
+		BusquedaPipe,
+		OrdenarPipe
 	],
 	imports: [
 		BrowserModule,

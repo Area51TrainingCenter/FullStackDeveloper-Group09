@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { of, Observable } from 'rxjs';
+import { delay } from "rxjs/operators"
 
 @Component({
 	selector: 'app-root',
@@ -10,8 +12,11 @@ export class AppComponent {
 	nombre: string = "FullStack"
 	textoBusqueda: string = ""
 	campoSeleccionado: string = "sinopsis"
+	campoOrdenar: string = "sinopsis"
 
-	libros = [
+	libros: Observable<any>
+
+	librosApiRest = [
 		{ autor: "Mario Vargas Llosa", novela: "La Ciudad y los Perros", anno: 1980, sinopsis: "Novela basada en una historia del colegio militar Leoncio Prado" },
 		{ autor: "Cesar Vallejo", novela: "Los Heraldos Negros", anno: 1910, sinopsis: "Recopilacion de poemas" },
 		{ autor: "Jose Maria Arguedas", novela: "El Sexto", anno: 1960, sinopsis: "Narra las vivencias dentro del desparecido penal El Sexto. Especificamente narra las vivencias de 'rosita'" },
@@ -20,6 +25,14 @@ export class AppComponent {
 		{ autor: "Cesar Vallejo", novela: "Paco Yunque", anno: 1940, sinopsis: "Describe las diferencias sociales y los abusos cometidos por un nino, hijo de un terrateniente, contra un nino pobre cuya mama trabajaba para el terrateniente" },
 		{ autor: "Anonimo", novela: "El Lazarillo de Tormes", anno: 1700, sinopsis: "Narra las peripecias de un nino dado por su mama a un patron para que lo alimente y lo eduque. Finalmente paso por 4 patrones y formo su propia empresa de aguatero" }
 	]
+
+	ngOnInit() {
+		this.libros = of(this.librosApiRest)
+			.pipe(
+				delay(5000)
+			)
+
+	}
 
 	busqueda(textoBusqueda: string) {
 		this.textoBusqueda = textoBusqueda

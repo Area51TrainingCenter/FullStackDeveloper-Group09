@@ -13,6 +13,13 @@
 				<option value="novela">Novela</option>
 			</select>
 		</div>
+		<div class="form-group">
+			<select class="form-control" [(ngModel)]="campoOrdenar">
+				<option value="sinopsis">Sinopsis</option>
+				<option value="autor">Autor</option>
+				<option value="novela">Novela</option>
+			</select>
+		</div>
 		<table class="col-12 table table-hover">
 			<tr>
 				<th>Autor</th>
@@ -20,7 +27,7 @@
 				<th>Anno</th>
 				<th>Sinopsis</th>
 			</tr>
-			<tr *ngFor="let libro of libros | busqueda:textoBusqueda:campoSeleccionado">
+			<tr *ngFor="let libro of libros | async |busqueda:textoBusqueda:campoSeleccionado | ordenar:campoOrdenar">
 				<th>{{libro.autor | uppercase}}</th>
 				<th>{{libro.novela}}</th>
 				<th>{{libro.anno}}</th>
