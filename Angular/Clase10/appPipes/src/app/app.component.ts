@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+	fecha: Date = new Date()
+	nombre: string = "FullStack"
+
 	libros = [
 		{ autor: "Mario Vargas Llosa", novela: "La Ciudad y los Perros", anno: 1980, sinopsis: "Novela basada en una historia del colegio militar Leoncio Prado" },
 		{ autor: "Cesar Vallejo", novela: "Los Heraldos Negros", anno: 1910, sinopsis: "Recopilacion de poemas" },
