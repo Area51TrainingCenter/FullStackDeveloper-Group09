@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row justify-content-center">
+
+
+		<div class="contenedor" [ngClass]="{dashed: conPuntos}" appArrastre (onEncima)="conPuntos=$event" (onSeleccion)="archivosSeleccionados($event)">
+
+		</div>
+
+		<div *ngFor="let imagen of listaImagenes">
+			<img [src]="imagen" alt="">
+		</div>
+
+
+
+		<!--<article basica>Texto del article</article>
+
+		<section appHover [colorPorDefecto]="'green'" colorHover="brown">Texto del section</section>
+
+		<section [appHover]="appHover" colorHover="brown">Texto del segundo section</section>
+
+		<table class="table table-bordered">
+			<thead class="thead-light">
+				<th>Curso</th>
+				<th>Nota</th>
+			</thead>
+			<tr *ngFor="let nota of notasPorCurso" [ngClass]="{rojo: clasePorNota(nota.nota, 'rojo'), amarillo: clasePorNota(nota.nota, 'amarillo'), verde: clasePorNota(nota.nota, 'verde')}">
+				<td>{{nota.curso}}</td>
+				<td>{{nota.nota}}</td>
+			</tr>
+		</table>
+
+
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+				<th>Curso</th>
+				<th>Nota</th>
+			</thead>
+			<tr *ngFor="let nota of notasPorCurso" [ngStyle]="{backgroundColor: colorPorNota(nota.nota), textDecoration: notasAprobatorias(nota.nota), fontSize: tamanoAleatorio()}">
+				<td>{{nota.curso}}</td>
+				<td>{{nota.nota}}</td>
+			</tr>
+		</table>-->
+	</div>
+</div>

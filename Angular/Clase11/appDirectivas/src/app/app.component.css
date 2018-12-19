@@ -1,0 +1,22 @@
+.contenedor {
+	width: 350px;
+	height: 250px;
+	border: 1px solid black;
+	margin: 20px
+}
+
+.dashed {
+	border: 1px dashed blue
+}
+
+.rojo {
+	background-color: red
+}
+
+.amarillo {
+	background-color: yellow
+}
+
+.verde {
+	background-color: green
+}
