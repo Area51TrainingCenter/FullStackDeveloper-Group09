@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+		const promesaPersonasLaboraronMes = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve([
+					{ nombre: "Luis" },
+					{ nombre: "Monica" }
+				])
+			}, 3000)
+		})
+
+		promesaPersonasLaboraronMes.then(
+			personas => {
+				console.log(personas)
+
+				var promesaPersonasPlanilla = new Promise((res, rej) => {
+					setTimeout(() => {
+						res([
+							{ nombre: "Monica" }
+						])
+					}, 2000)
+				})
+
+			}
+		).then(
+			personasPlanilla => console.log(personasPlanilla)
+		)
+
+
+	</script>
+
+</body>
+
+</html>

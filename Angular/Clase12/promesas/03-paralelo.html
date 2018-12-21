@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+		const promesaPersonasVacaciones = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve([
+					{ nombre: "Clarisa" },
+					{ nombre: "Eva" }
+				])
+			}, 2000)
+		})
+
+		const promesaIngresaron = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve([
+					{ nombre: "Carmen" },
+					{ nombre: "Javier" },
+					{ nombre: "Pedro" }
+				])
+			}, 4000)
+		})
+
+		Promise.all([promesaPersonasVacaciones, promesaIngresaron])
+			.then(
+				resultados => console.log(resultados)
+			)
+
+	</script>
+
+</body>
+
+</html>

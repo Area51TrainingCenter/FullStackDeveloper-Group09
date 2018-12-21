@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+		const promesa = new Promise((resolver, rechazar) => {
+			setTimeout(() => {
+				const respuesta = [
+					{ nombre: "Jorge" },
+					{ nombre: "Carmen" },
+					{ nombre: "Andrea" }
+				]
+
+				//resolver(respuesta)
+				rechazar({
+					status: 409,
+					message: "Operation forbidden"
+				})
+
+			}, 3000)
+		})
+
+		/* 		promesa.then(
+					(resultados) => console.log(resultados),
+					(error) => console.log(error)
+				) */
+		/* 		promesa
+					.then(
+						(resultados) => console.log(resultados)
+					)
+					.catch(
+						(error) => console.log(error)
+					) */
+
+		promesa.then(
+			(resultados) => console.log(resultados)
+		)
+
+		promesa.catch(
+			(error) => console.log(error)
+		)
+
+
+	</script>
+
+</body>
+
+</html>
