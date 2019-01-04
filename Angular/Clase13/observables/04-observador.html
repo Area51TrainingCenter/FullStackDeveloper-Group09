@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<button>Boton</button>
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+		const boton = document.querySelector("button")
+
+		const { fromEvent, interval } = rxjs
+		const { map } = rxjs.operators
+
+		const observador = {
+			next: data => console.log(data),
+			error: error => console.log(error),
+			complete: () => console.log("completo")
+		}
+
+
+		interval(1000)
+			.pipe(
+				map(numero => numero * 3)
+			)
+			.subscribe(observador)
+
+
+	</script>
+
+
+</body>
+
+</html>
