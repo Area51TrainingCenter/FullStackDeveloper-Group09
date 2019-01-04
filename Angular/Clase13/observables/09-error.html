@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<input type="text">
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+		const {throwError, of} = rxjs
+		const {delay} = rxjs.operators
+		
+		const obs = throwError("Se perdió la conexión")
+
+		obs
+			.pipe(
+				delay(2000)
+			)
+			.subscribe(
+			(data) => console.log(data),
+			error => console.log(error)
+		)
+
+
+
+	</script>
+
+
+</body>
+
+</html>

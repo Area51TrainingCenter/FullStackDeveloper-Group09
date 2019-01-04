@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<input type="text">
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+		const input = document.querySelector("input")
+
+		const {fromEvent, of} = rxjs
+		const {debounceTime, map, distinctUntilChanged, filter} = rxjs.operators
+
+		const personas = ["sergio hidalgo", "carla torres", "pedro neyra"]
+
+		fromEvent(input, "input")
+			.pipe(
+				debounceTime(1000),
+				map(ev => ev.target.value),
+				filter(palabra => palabra.length>=3),
+				distinctUntilChanged()
+			)
+			.subscribe(
+				data => {
+					const personasFiltradas = personas.filter(item => item.indexOf(data)>-1)
+					of(personasFiltradas)
+						.subscribe(
+							lista => console.log(lista)
+						)
+				},
+				error => console.log(error)
+			)
+
+
+	</script>
+
+
+</body>
+
+</html>
