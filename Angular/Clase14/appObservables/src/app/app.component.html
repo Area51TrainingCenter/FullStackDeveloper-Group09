@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="col-12">
+				<div class="col-6">
+					<input class="form-control" type="text" [(ngModel)]="textoBuscado" (input)="buscador()">
+				</div>
+				<div class="col-6">
+					<select class="form-control" [(ngModel)]="orden" (change)="ordenador()">
+						<option value="nombre">Nombre</option>
+						<option value="apellido">Apellido</option>
+					</select>
+				</div>
+				<table class="table table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<th>Nombre</th>
+							<th>Apellido</th>
+						</tr>
+					</thead>
+					<tr *ngFor="let usuario of usuariosAMostrar">
+						<td>{{usuario.nombre}}</td>
+						<td>{{usuario.apellido}}</td>
+					</tr>
+				</table>
+				<div class="col-12 form-group">
+					<select class="form-control" [(ngModel)]="pagina" (change)="paginador()">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
