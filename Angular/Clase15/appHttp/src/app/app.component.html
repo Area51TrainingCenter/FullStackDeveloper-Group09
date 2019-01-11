@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+
+      <form [formGroup]="grupo" (ngSubmit)="insertar()">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Título" name="titulo" formControlName="titulo">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" [disabled]="!grupo.valid || ejecutando">Insertar</button>
+        </div>
+      </form>
+
+      <form [formGroup]="grupoAE">
+        <div class="form-group">
+          <input type="numeric" class="form-control" placeholder="ID" formControlName="idCurso" name="idCurso">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Título" name="titulo" formControlName="titulo">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" (click)="actualizar()">Actualizar</button>
+          <button class="btn btn-success" (click)="eliminar()">Eliminar</button>
+        </div>
+      </form>
+
+      <button class="btn btn-danger" (click)="login()">Login</button>
+
+    </div>
+    <div class="col-6">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let item of listaCursos">
+          <td>{{item.idCurso}}</td>
+          <td>{{item.titulo}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
