@@ -5,14 +5,14 @@ import { EdicionLibrosComponent } from './edicion-libros/edicion-libros.componen
 
 
 const routes: Routes = [
-  {path: "libros", children:[
+  {path: "", children:[
     {path: "", component: ListadoLibrosComponent},
     {path: "edicion", component: EdicionLibrosComponent}
   ]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class LibrosRoutingModule { }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LibrosRoutingModule } from './libros-routing.module';
 import { ListadoLibrosComponent } from './listado-libros/listado-libros.component';
 import { EdicionLibrosComponent } from './edicion-libros/edicion-libros.component';
+import { CompartidoModule } from '../compartido/compartido.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { EdicionLibrosComponent } from './edicion-libros/edicion-libros.componen
   ],
   imports: [
     CommonModule,
-    LibrosRoutingModule
+    LibrosRoutingModule,
+    CompartidoModule
   ]
 })
 export class LibrosModule { }
