@@ -12,6 +12,11 @@ import { ListadoEditorialesComponent } from './listado-editoriales/listado-edito
 import { EdicionEditorialesComponent } from './edicion-editoriales/edicion-editoriales.component';
 import { ReducidorPipe } from './reducidor.pipe';
 import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
+import { AppRoutingModule } from './app.routing.module';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
     ConfirmacionComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
