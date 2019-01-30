@@ -1,26 +1,12 @@
 import express = require("express")
 import { Request, Response } from "express"
+import { IndexController } from '../api/controllers/index.controller'
 
 const router = express.Router()
+const controller = new IndexController()
 
-router.get("/", (req: Request, res: Response) => {
-  res
-    .status(200)
-    .send("Home")
-})
-
-router.get("/quienes", (req: Request, res: Response) => {
-  res
-    .status(200)
-    .type("text/html")
-    .send("<h1>Quienes</h1>")
-})
-
-router.get("/servicios", (req: Request, res: Response) => {
-  res
-    .status(200)
-    .type("text/html")
-    .send("<h1>Servicios</h1>")
-})
+router.get("/", controller.home)
+router.get("/quienes", controller.quienes)
+router.get("/servicios", controller.servicios)
 
 export {router}
