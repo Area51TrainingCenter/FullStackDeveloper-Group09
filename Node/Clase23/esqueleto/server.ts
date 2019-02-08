@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from "express"
 import bodyParser = require("body-parser")
 import {router as routerUsuarios} from "./routes/usuarios.route"
 import {router as routerIndex} from "./routes/index.route"
+import {router as routerRoles} from "./routes/roles.route"
 import { handlerErrors } from './handlers/errors.handler';
 import mongoose = require("mongoose")
 
@@ -25,10 +26,12 @@ app.use(bodyParser.json())
 
 // Modelos
 require("./api/models/usuario.model")
+require("./api/models/rol.model")
 
 // Middlewares de rutas
 app.use("/", routerIndex)
 app.use("/usuarios", routerUsuarios)
+app.use("/roles", routerRoles)
 
 //app.use(express.static("./public"))
 

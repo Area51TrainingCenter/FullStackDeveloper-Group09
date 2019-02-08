@@ -1,10 +1,9 @@
 import express = require("express")
-import { Request, Response, NextFunction} from "express"
-import { UsuariosController } from '../api/controllers/usuarios.controller'
+import { RolesController } from '../api/controllers/roles.controller'
 import { handlerErrors } from "../handlers/errors.handler";
 
 const router = express.Router()
-const controller = new UsuariosController()
+const controller = new RolesController()
 
 router.get("/", handlerErrors.cacheo(controller.listar))
 router.get("/:id", handlerErrors.cacheo(controller.detallar))
