@@ -8,7 +8,7 @@ const router = express.Router()
 const controller = new UsuariosController()
 
 const autenticar = (req: Request, res: Response, next: NextFunction) => {
-    res.json({message: "User isn't logged"})
+    return res.json({message: "User isn't logged"})
 }
 
 const autorizar = (...roles) => {
