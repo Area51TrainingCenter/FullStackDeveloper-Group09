@@ -8,15 +8,19 @@ import {router as routerRoles} from "./routes/roles.route"
 import { handlerErrors } from './handlers/errors.handler';
 import mongoose = require("mongoose")
 
+// Variables de entorno
+const dotenv = require("dotenv")
+dotenv.config({path: "./variables.env"})
+
 // Definición de constantes
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 // Declaración de variables
 const app = express()
 
 // Conexión a Mongo
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://user_prueba:abcd123456789@cluster0-shard-00-00-mgpgx.mongodb.net:27017,cluster0-shard-00-01-mgpgx.mongodb.net:27017,cluster0-shard-00-02-mgpgx.mongodb.net:27017/colegios?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true", {useNewUrlParser: true})
+mongoose.connect(`mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0-shard-00-00-mgpgx.mongodb.net:27017,cluster0-shard-00-01-mgpgx.mongodb.net:27017,cluster0-shard-00-02-mgpgx.mongodb.net:27017/${process.env.MONGODB_DB}?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, {useNewUrlParser: true})
 mongoose.connection.on("connected", ()=> console.log("Conectado a Mongo"))
 mongoose.connection.on("error", error => console.log(error))
 

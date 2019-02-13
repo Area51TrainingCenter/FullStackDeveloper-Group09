@@ -7,16 +7,6 @@ const handlerErrors = {
     error.status = 404
 
     next(error)
-
-    //res.sendFile(__dirname + "/public/index.html")
-    /*  res
-       .status(400)
-       .json({
-         status: 404,
-         message: "Path not found"
-       }) */
-    /* .type("text/html")
-    .send("<h1>Ruta no encontrada</h1>") */
   },
   cacheo: (ftn: (req: Request, res: Response, next: NextFunction)=>Promise<any>) => {
     return (rq: Request, rs: Response, nx: NextFunction) => {
@@ -27,13 +17,16 @@ const handlerErrors = {
     }
   },
   general: (error: IError, req: Request, res: Response, next: NextFunction) => {
+    const obj = {
+      status: error.status,
+        message: error.message
+    }
+
+    if(process.env.ENVIROMENT=="development") obj["stack"]=error.stack
+
     res
       .status(error.status)
-      .json({
-        status: error.status,
-        message: error.message,
-        stack: error.stack
-      })
+      .json(obj)
   }
 }
 

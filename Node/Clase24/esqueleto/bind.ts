@@ -11,3 +11,4 @@ const cantidadAlumnos = Estudiantes.obtenerCantidadAlumnos.bind(Estudiantes)
 
 console.log("Alumnos", cantidadAlumnos())
 
+/* mongodb+srv://user_prueba:abcd123456789@cluster0-mgpgx.mongodb.net/admin */

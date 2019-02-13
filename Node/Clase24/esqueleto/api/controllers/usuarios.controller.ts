@@ -41,4 +41,27 @@ export class UsuariosController extends BaseController {
     }
 
   }
+
+  async newAccessToken(req: Request, res: Response, next: NextFunction) {
+    const refreshToken = req.body.refreshToken
+
+    const usuario = await Usuario.findOne({refreshToken}).populate("rol")
+
+    if(usuario) {
+      const accessToken = createAccessToken(usuario._id, usuario.nombre, usuario.rol.nombre)
+
+      res
+        .json({
+          accessToken
+        })
+    } else {
+      res
+        .status(404)
+        .json({
+          status:404,
+          message: "User not found"
+        })
+    }
+  }
+  
 }
