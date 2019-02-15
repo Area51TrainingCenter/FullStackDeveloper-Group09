@@ -7,6 +7,7 @@ import {router as routerIndex} from "./routes/index.route"
 import {router as routerRoles} from "./routes/roles.route"
 import { handlerErrors } from './handlers/errors.handler';
 import mongoose = require("mongoose")
+import cors = require("cors")
 
 // Variables de entorno
 //const dotenv = require("dotenv")
@@ -25,6 +26,7 @@ mongoose.connection.on("connected", ()=> console.log("Conectado a Mongo"))
 mongoose.connection.on("error", error => console.log(error))
 
 // Middlewares
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
