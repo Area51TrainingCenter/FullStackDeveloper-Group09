@@ -9,8 +9,8 @@ import { handlerErrors } from './handlers/errors.handler';
 import mongoose = require("mongoose")
 
 // Variables de entorno
-const dotenv = require("dotenv")
-dotenv.config({path: "./variables.env"})
+//const dotenv = require("dotenv")
+//dotenv.config({path: "./variables.env"})
 
 // Definición de constantes
 const PORT = process.env.PORT || 4000
