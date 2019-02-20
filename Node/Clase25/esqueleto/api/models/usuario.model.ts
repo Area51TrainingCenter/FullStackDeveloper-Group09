@@ -28,6 +28,36 @@ const esquema = new mongoose.Schema({
   }
 })
 
+esquema.static.listar = function(pagina){
+  const tamano = 3
+  return this.aggregate(
+    [
+      {
+        $skip:  pagina*tamano
+      },
+      {
+        $limit: tamano
+      },
+      {
+          $lookup: {
+              from: "autores",
+              localField: "autor",
+              foreignField: "_id",
+              as: "autor"
+          }
+      },
+      {
+          $group: {
+              _id: {"autor": "$autor.nombre"}, cuenta: {$sum: 1} 
+          }
+      },
+      {
+          $project: {"_id.autor": 1, cuenta: 1}
+      }
+  ]
+  )
+}
+
 const Usuario = mongoose.model("Usuario", esquema)
 
 export default Usuario

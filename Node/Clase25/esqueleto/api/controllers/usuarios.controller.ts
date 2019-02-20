@@ -63,5 +63,10 @@ export class UsuariosController extends BaseController {
         })
     }
   }
+
+  async listadoUsuarios(req: Request, res: Response, next: NextFunction) { 
+    const usuarios = await Usuario.listar(req.params.pagina)
+  }
+
   
 }

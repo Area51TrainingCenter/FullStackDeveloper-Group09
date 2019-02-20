@@ -1,0 +1,139 @@
+Para levantar el demonio
+mongod
+
+Para levantar las herramientas en línea (CLI)
+mongo
+
+Para listar las bases de datos
+show databases
+
+Para ingresar a una base de datos
+use <<nombre de la bd>>
+
+Para listar las colecciones
+show collections
+
+Para insertar
+db.alumnos.insertOne(...)
+db.alumnos.insertMany(...)
+
+Para listar
+db.alumnos.find()
+db.alumnos.find().pretty()
+db.alumnos.find().toArray()
+
+Para actualizar
+db.alumnos.update(...) NO USAR
+db.alumnos.updateOne(..., {$set: ... })
+db.alumnos.updateMany(..., {$set: ... })
+
+Para eliminar
+db.alumnos.deleteOne(...)
+db.alumnos.deleteMany(...)
+
+Para contar
+db.alumnos.find().count()
+
+Para hacer búsquedas
+db.alumnos.find(...)
+db.alumnos.findOne(...)
+
+Operadores lógicos
+$and: [..., ...]
+$or: [..., ...]
+
+Operadores de comparación
+$gt, $gte, $lt, $lte, $eq, $ne
+
+Agregaciones
+db.libros.aggregate([
+    {
+        $match: {titulo: "El Sexto"}
+    },
+    {
+        $lookup: {
+            from: "autores",
+            localField: "autor",
+            foreignField: "_id",
+            as: "autor"
+        }
+    },
+    {
+        $project: {_id: 0, titulo: 1, "autor.nombre": 1}
+    }
+]).pretty()
+
+
+db.libros.aggregate([
+    {
+        $skip: 6
+    },
+    {
+        $limit: 3
+    },
+    {
+        $lookup: {
+            from: "autores",
+            localField: "autor",
+            foreignField: "_id",
+            as: "autor"
+        }
+    },
+    {
+        $project: {_id: 0, titulo: 1, "autor.nombre": 1}
+    }
+]).pretty()
+
+db.libros.aggregate([
+    {
+        $lookup: {
+            from: "autores",
+            localField: "autor",
+            foreignField: "_id",
+            as: "autor"
+        }
+    },
+    {
+        $group: {
+            _id: {"autor": "$autor.nombre"}, cuenta: {$sum: 1} 
+        }
+    },
+    {
+        $project: {"_id.autor": 1, cuenta: 1}
+    }
+]).pretty()
+
+
+
+
+db.usuarios.insertMany([
+{nombre: "Alfonso", edad: 40, area: "Contabilidad"},
+{nombre: "Carmen", edad: 20, area: "Cuentas"},
+{nombre: "Jana", edad: 23, area: "Community"},
+{nombre: "Fernanda", edad: 23, area: "Cuentas"},
+{nombre: "Tino", edad: 33, area: "Diseño"},
+{nombre: "Omar", edad: 27, area: "Diseño"},
+{nombre: "Gustavo", edad: 45, area: "Creatividad"},
+{nombre: "Nuria", edad: 55, area: "Audiovisuales"},
+{nombre: "Héctor", edad: 35, area: "Productora"}
+])
+
+> db.autores.insertMany([
+... {nombre: "Mario Vargas Llosa"},
+... {nombre: "César Vallejo"},
+... {nombre: "Patrick Suskind"},
+... {nombre: "José María Arguedas"},
+... {nombre: "José Carlos Mariategui"},
+... {nombre: "Hesidoto"}
+... ])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5c6cb34bb2e3fb4dd39b0ac0"),
+		ObjectId("5c6cb34bb2e3fb4dd39b0ac1"),
+		ObjectId("5c6cb34bb2e3fb4dd39b0ac2"),
+		ObjectId("5c6cb34bb2e3fb4dd39b0ac3"),
+		ObjectId("5c6cb34bb2e3fb4dd39b0ac4"),
+		ObjectId("5c6cb34bb2e3fb4dd39b0ac5")
+	]
+}
